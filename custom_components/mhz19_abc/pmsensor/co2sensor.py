@@ -9,6 +9,8 @@ import serial
 
 MHZ19_SIZE = 9
 MZH19_READ = [0xff, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x79]
+MHZ19_ABC_ENABLE = [0xff, 0x01, 0x79, 0xa0, 0x00, 0x00, 0x00, 0x00, 0xe6]
+MHZ19_ABC_DISABLE = [0xff, 0x01, 0x79, 0x00, 0x00, 0x00, 0x00, 0x00, 0x86]
 MZH19_RESET = [0xff, 0x01, 0x87, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78]
 
 def reset_mh_z19(serial_device):
@@ -22,7 +24,7 @@ def reset_mh_z19(serial_device):
                         stopbits=serial.STOPBITS_ONE,
                         bytesize=serial.EIGHTBITS)    
 
-    #  ser.write(MZH19_RESET)
+    ser.write(MZH19_RESET)
 
     return None
 
@@ -85,3 +87,45 @@ def read_mh_z19_with_temperature(serial_device):
                          len(sbuf))
 
     return res
+
+def mh_z19_abc_enable(serial_device):
+    """abc enable"""    
+    logger.warning("abc enable")
+
+    ser = serial.Serial(port=serial_device,
+                        baudrate=9600,
+                        parity=serial.PARITY_NONE,
+                        stopbits=serial.STOPBITS_ONE,
+                        bytesize=serial.EIGHTBITS)    
+
+    ser.write(MHZ19_ABC_ENABLE)
+
+    return True
+
+def mh_z19_abc_disable(serial_device):
+    """abc enable"""    
+    logger.warning("abc disable")
+
+    ser = serial.Serial(port=serial_device,
+                        baudrate=9600,
+                        parity=serial.PARITY_NONE,
+                        stopbits=serial.STOPBITS_ONE,
+                        bytesize=serial.EIGHTBITS)    
+
+    ser.write(MHZ19_ABC_DISABLE)
+
+    return True
+
+def mh_z19_calibrate_zero(serial_device):
+    """reset to zero"""    
+    logger.warning("calibrate zero")
+
+    ser = serial.Serial(port=serial_device,
+                        baudrate=9600,
+                        parity=serial.PARITY_NONE,
+                        stopbits=serial.STOPBITS_ONE,
+                        bytesize=serial.EIGHTBITS)    
+
+    ser.write(MZH19_RESET)
+
+    return True
