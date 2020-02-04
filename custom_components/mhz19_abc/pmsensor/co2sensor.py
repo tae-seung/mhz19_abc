@@ -90,6 +90,9 @@ def read_mh_z19_with_temperature(serial_device):
 
 def mh_z19_abc_enable(serial_device):
     """abc enable"""    
+
+    logger = logging.getLogger(__name__)
+
     logger.warning("abc enable")
 
     ser = serial.Serial(port=serial_device,
@@ -104,6 +107,9 @@ def mh_z19_abc_enable(serial_device):
 
 def mh_z19_abc_disable(serial_device):
     """abc enable"""    
+
+    logger = logging.getLogger(__name__)
+
     logger.warning("abc disable")
 
     ser = serial.Serial(port=serial_device,
@@ -118,6 +124,9 @@ def mh_z19_abc_disable(serial_device):
 
 def mh_z19_calibrate_zero(serial_device):
     """reset to zero"""    
+
+    logger = logging.getLogger(__name__)
+
     logger.warning("calibrate zero")
 
     ser = serial.Serial(port=serial_device,

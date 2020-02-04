@@ -75,7 +75,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 
     hass.services.register(DOMAIN, "abc_enable", handle_abc_enable)
     hass.services.register(DOMAIN, "abc_disable", handle_abc_disable)
-    hass.services.register(DOMAIN, "abc_calibrate_zero", handle_calibrate_zero)
+    hass.services.register(DOMAIN, "calibrate_zero", handle_calibrate_zero)
 
     return True
 
