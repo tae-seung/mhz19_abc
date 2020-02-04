@@ -93,7 +93,7 @@ def mh_z19_abc_enable(serial_device):
 
     logger = logging.getLogger(__name__)
 
-    logger.warning("abc enable")
+    logger.info("abc enable")
 
     ser = serial.Serial(port=serial_device,
                         baudrate=9600,
@@ -110,7 +110,7 @@ def mh_z19_abc_disable(serial_device):
 
     logger = logging.getLogger(__name__)
 
-    logger.warning("abc disable")
+    logger.info("abc disable")
 
     ser = serial.Serial(port=serial_device,
                         baudrate=9600,
@@ -127,7 +127,7 @@ def mh_z19_calibrate_zero(serial_device):
 
     logger = logging.getLogger(__name__)
 
-    logger.warning("calibrate zero")
+    logger.info("calibrate zero")
 
     ser = serial.Serial(port=serial_device,
                         baudrate=9600,
