@@ -13,21 +13,6 @@ MHZ19_ABC_ENABLE = [0xff, 0x01, 0x79, 0xa0, 0x00, 0x00, 0x00, 0x00, 0xe6]
 MHZ19_ABC_DISABLE = [0xff, 0x01, 0x79, 0x00, 0x00, 0x00, 0x00, 0x00, 0x86]
 MZH19_RESET = [0xff, 0x01, 0x87, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78]
 
-def reset_mh_z19(serial_device):
-    """reset to zero"""    
-
-    logger = logging.getLogger(__name__)
-
-    ser = serial.Serial(port=serial_device,
-                        baudrate=9600,
-                        parity=serial.PARITY_NONE,
-                        stopbits=serial.STOPBITS_ONE,
-                        bytesize=serial.EIGHTBITS)    
-
-    ser.write(MZH19_RESET)
-
-    return None
-
 def read_mh_z19(serial_device):
     """ Read the CO2 PPM concenration from a MH-Z19 sensor"""
 
@@ -103,7 +88,7 @@ def mh_z19_abc_enable(serial_device):
 
     ser.write(MHZ19_ABC_ENABLE)
 
-    return True
+    return None
 
 def mh_z19_abc_disable(serial_device):
     """abc enable"""    
@@ -120,7 +105,7 @@ def mh_z19_abc_disable(serial_device):
 
     ser.write(MHZ19_ABC_DISABLE)
 
-    return True
+    return None
 
 def mh_z19_calibrate_zero(serial_device):
     """reset to zero"""    
@@ -137,4 +122,4 @@ def mh_z19_calibrate_zero(serial_device):
 
     ser.write(MZH19_RESET)
 
-    return True
+    return None

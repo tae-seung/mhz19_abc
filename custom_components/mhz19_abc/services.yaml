@@ -1,0 +1,6 @@
+abc_enable:
+  description: enables automatic baseline calibration on the sensor
+abc_disable:
+  description: disables automatic baseline calibration on the sensor
+calibrate_zero:
+  description: zero point calibration command on the sensor
