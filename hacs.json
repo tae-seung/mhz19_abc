@@ -1,0 +1,8 @@
+{
+  "name": "mhz19_abc",
+  "content_in_root": false,
+  "render_readme": true,
+  "domains": ["sensor"],
+  "country": ["KO"],
+  "homeassistant": "0.100.0"
+}
