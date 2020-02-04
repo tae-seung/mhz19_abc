@@ -2,7 +2,7 @@
 from datetime import timedelta
 import logging
 
-from pmsensor import co2sensor
+from .pmsensor import co2sensor
 import voluptuous as vol
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
