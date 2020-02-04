@@ -41,24 +41,6 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 DOMAIN = "mhz19_abc"
 
-def setup(hass, config):
-    """Set up is called when Home Assistant is loading our component."""
-
-    def handle_abc_enable(call):
-        co2sensor.mh_z19_abc_enable(config.get(CONF_SERIAL_DEVICE))
-
-    def handle_abc_disable(call):
-        co2sensor.mh_z19_abc_disable(config.get(CONF_SERIAL_DEVICE))
-
-    def handle_calibrate_zero(call):
-        co2sensor.mh_z19_calibrate_zero(config.get(CONF_SERIAL_DEVICE))
-
-    hass.services.register(DOMAIN, "abc_enable", handle_abc_enable)
-    hass.services.register(DOMAIN, "abc_disable", handle_abc_disable)
-    hass.services.register(DOMAIN, "abc_calibrate_zero", handle_calibrate_zero)
-
-    return True
-
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the available CO2 sensors."""
 
@@ -81,6 +63,20 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
         dev.append(MHZ19Sensor(data, variable, SENSOR_TYPES[variable][1], name))
 
     add_entities(dev, True)
+
+    def handle_abc_enable(call):
+        co2sensor.mh_z19_abc_enable(config.get(CONF_SERIAL_DEVICE))
+
+    def handle_abc_disable(call):
+        co2sensor.mh_z19_abc_disable(config.get(CONF_SERIAL_DEVICE))
+
+    def handle_calibrate_zero(call):
+        co2sensor.mh_z19_calibrate_zero(config.get(CONF_SERIAL_DEVICE))
+
+    hass.services.register(DOMAIN, "abc_enable", handle_abc_enable)
+    hass.services.register(DOMAIN, "abc_disable", handle_abc_disable)
+    hass.services.register(DOMAIN, "abc_calibrate_zero", handle_calibrate_zero)
+
     return True
 
 
